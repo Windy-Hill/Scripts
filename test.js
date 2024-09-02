@@ -5,6 +5,7 @@ const mapping = {
     'MoneyThings': ['Premium'],
     'totowallet': ['all', 'com.ziheng.totowallet.yearly'],
     'One4Wall': ['lifetime', 'lifetime_key'],
+    'Ledger': ['Pro', 'com.lifetime.pro'],
     'Percento': ['premium']
 };
 
