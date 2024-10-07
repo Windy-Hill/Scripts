@@ -1,6 +1,6 @@
 const mapping = {
     'reader': ['vip2','com.valo.reader.vip2.year'],
-    'PureLibro': ['vip2','com.reader.autoRenewableYearly'],
+    'PureLibro': ['Pro'],
     'MOZE': ['premium'],
     'MoneyThings': ['Premium'],
     'totowallet': ['all', 'com.ziheng.totowallet.yearly'],
