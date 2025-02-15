@@ -6,6 +6,7 @@ const mapping = {
     'totowallet': ['all', 'com.ziheng.totowallet.yearly'],
     'One4Wall': ['lifetime', 'lifetime_key'],
     'Ledger': ['Pro', 'com.lifetime.pro'],
+    'Cookie': ['allaccess','app.ft.Bookkeeping.lifetime'],
     'Percento': ['premium']
 };
 
