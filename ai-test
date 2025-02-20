@@ -1,0 +1,44 @@
+const SUBSCRIPTION_CONFIG = {
+  'reader': ['vip2','com.valo.reader.vip2.year'],
+    'PureLibro': ['Pro'],
+    'MOZE': ['premium'],
+    'MoneyThings': ['Premium'],
+    'totowallet': ['all', 'com.ziheng.totowallet.yearly'],
+    'One4Wall': ['lifetime', 'lifetime_key'],
+    'Ledger': ['Pro', 'com.lifetime.pro'],
+    'Cookie': ['allaccess','app.ft.Bookkeeping.lifetime'],
+    'Percento': ['premium']
+};
+
+const DEFAULT_SUBSCRIPTION = {
+  id: 'default_sub',
+  status: 'active',
+};
+
+const userAgent = $request.useragent;
+
+let responseObject;
+try {
+  responseObject = JSON.parse($response.body);
+} catch (error) {
+  console.error('Failed to parse response body:', error);
+  $response.status = 500;
+  $response.body = 'Error parsing response body';
+  return;
+}
+
+function getSubscriptionInfo(appName) {
+  return SUBSCRIPTION_CONFIG[appName] || DEFAULT_SUBSCRIPTION;
+}
+
+const matchedApp = Object.keys(SUBSCRIPTION_CONFIG).find(app => userAgent.includes(app));
+
+if (matchedApp) {
+  const subscriptionId = getSubscriptionInfo(matchedApp);
+  responseObject.subscription_id = subscriptionId.id; // 根据responseObject的结构设置
+} else {
+  console.warn('No matching application found in user agent.');
+}
+
+$response.status = 200;
+$response.body = JSON.stringify(responseObject);
